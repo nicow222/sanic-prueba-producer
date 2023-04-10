@@ -1,5 +1,8 @@
 from aio_pika import connect_robust, IncomingMessage
 from config.database import get_database
+import os
+
+rabbitmq_host = os.environ.get('rabbitmq', '127.0.0.1')
 
 async def process_message(message: IncomingMessage):
     async with message.process():
@@ -27,7 +30,7 @@ async def process_message(message: IncomingMessage):
 
 async def task_create_note():
     connection = await connect_robust(
-        "amqp://guest:guest@127.0.0.1/",
+        f"amqp://guest:guest@{rabbitmq_host}/",
     )
 
     queue_name = "users_queue"
