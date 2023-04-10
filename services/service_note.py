@@ -2,7 +2,7 @@ from aio_pika import connect_robust, IncomingMessage
 from config.database import get_database
 import os
 
-rabbitmq_host = os.environ.get('rabbitmq', '127.0.0.1')
+rabbitmq_host = os.environ.get('RABBITMQ_HOST', '127.0.0.1')
 
 async def process_message(message: IncomingMessage):
     async with message.process():
