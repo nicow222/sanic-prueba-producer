@@ -7,7 +7,7 @@ async def process_message(message: IncomingMessage):
         db = await get_database()
         
         if db is None:
-            raise Exception("Failed to establish database connection")
+            raise Exception("Fallo al establecer conexion con la BD")
         
         user_collection = db['users']
         note_collection = db['note']
