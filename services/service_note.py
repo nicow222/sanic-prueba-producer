@@ -32,7 +32,6 @@ async def task_create_note():
     connection = await connect_robust(
         f"amqp://guest:guest@{rabbitmq_host}/",
     )
-
     queue_name = "users_queue"
 
     # Creating channel
